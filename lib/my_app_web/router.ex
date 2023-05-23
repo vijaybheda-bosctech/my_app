@@ -18,6 +18,12 @@ defmodule MyAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    resources "/posts", PostController
+  end
+
+  scope "/admin", MyAppWeb.Admin, as: :admin do
+    pipe_through :browser
+    resources "/posts", PostController
   end
 
   # Other scopes may use custom stacks.

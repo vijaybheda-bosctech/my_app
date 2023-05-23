@@ -13,6 +13,15 @@ defmodule MyAppWeb.Endpoint do
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
+  plug(
+    Plug.Static,
+    at: "/torch",
+    from: {:torch, "priv/static"},
+    gzip: true,
+    cache_control_for_etags: "public, max-age=86400",
+    headers: [{"access-control-allow-origin", "*"}]
+  )
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest

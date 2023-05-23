@@ -10,6 +10,9 @@ import Config
 config :my_app,
   ecto_repos: [MyApp.Repo]
 
+config :torch,
+  otp_app: :my_app
+
 # Configures the endpoint
 config :my_app, MyAppWeb.Endpoint,
   url: [host: "localhost"],
